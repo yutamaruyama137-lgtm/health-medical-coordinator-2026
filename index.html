@@ -141,6 +141,17 @@
                 background: rgba(255, 255, 255, 0.98);
             }
         }
+        /* スマホ用固定CTA - ヘッダー分の余白を確保 */
+        @media (max-width: 767px) {
+            body { padding-bottom: 80px; }
+        }
+        .cta-fixed {
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        .cta-fixed.cta-visible {
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="bg-slate-50">
@@ -150,13 +161,13 @@
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <!-- ロゴ画像 -->
-                <img src="21.03.25 健康医療学会マーク.jpg" alt="日本健康医療学会ロゴ" class="h-12 md:h-14 w-auto">
+                <img src="21.03.25 健康医療学会マーク.jpg" alt="日本健康医療学会ロゴ" class="h-12 md:h-14 w-auto" loading="eager" width="56" height="56">
                 <div class="hidden md:block">
                     <p class="text-xs text-gray-500">一般社団法人 日本健康医療学会主催</p>
                     <p class="text-sm font-bold text-medical-primary">第21回 健康医療コーディネーター研修会・認定審査</p>
                 </div>
             </div>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScexGXvfxsSiQP6Cr3XNxmqbUaSybH3yr9TD3-5QYwuS7vXdw/viewform?usp=dialog" target="_blank" class="bg-medical-accent hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full text-sm shadow-lg transition duration-300">
+            <a href="https://nihonkenkouiryou.jp/joining/" target="_blank" class="bg-medical-accent hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full text-sm shadow-lg transition duration-300">
                 お申し込みはこちら
             </a>
         </div>
@@ -166,7 +177,7 @@
     <section class="relative pt-24 pb-16 md:pt-32 md:pb-24 bg-medical-primary overflow-hidden">
         <!-- Background Image Overlay (実際の講義風景を使用) -->
         <div class="absolute inset-0 z-0 opacity-20">
-            <img src="DSC_0728.JPG" alt="研修会・認定審査風景" class="w-full h-full object-cover">
+            <img src="DSC_0728.JPG" alt="研修会・認定審査風景" class="w-full h-full object-cover" loading="eager" fetchpriority="high">
         </div>
         
         <div class="relative z-10 max-w-6xl mx-auto px-4 text-center text-white">
@@ -183,19 +194,29 @@
             </p>
 
             <div class="bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg p-6 max-w-4xl mx-auto mb-10 animate-fade-in-up" style="animation-delay: 0.6s;">
-                <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 text-lg font-bold">
-                    <div class="flex items-center gap-2">
+                <div class="flex flex-col md:flex-row justify-center items-stretch gap-4 md:gap-6 text-lg font-bold">
+                    <div class="flex items-center justify-center gap-2">
                         <span class="bg-medical-accent text-white px-2 py-1 text-xs rounded">開催日</span>
                         2026年4月19日(日) 9:20～18:00
                     </div>
-                    <div class="flex items-center gap-2">
-                        <span class="bg-medical-accent text-white px-2 py-1 text-xs rounded">会場</span>
-                        ハリウッド大学院大学（先着100名） or Zoom
+                    <div class="flex flex-col md:flex-row gap-3 md:gap-6 md:items-center">
+                        <div class="flex items-center justify-center gap-2 bg-white/20 rounded-lg py-2 px-4">
+                            <i class="fas fa-map-marker-alt text-medical-accent"></i>
+                            <span>会場</span>
+                            <span class="text-medical-accent text-base">先着100名</span>
+                        </div>
+                        <span class="hidden md:inline text-white/60">or</span>
+                        <div class="flex items-center justify-center gap-2 bg-white/20 rounded-lg py-2 px-4">
+                            <i class="fas fa-video text-medical-accent"></i>
+                            <span>Zoom</span>
+                            <span class="text-green-300 text-base font-bold">無制限</span>
+                        </div>
                     </div>
                 </div>
+                <p class="text-center text-sm mt-3 opacity-90">ハリウッド大学院大学（六本木ヒルズ）／オンライン</p>
             </div>
 
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScexGXvfxsSiQP6Cr3XNxmqbUaSybH3yr9TD3-5QYwuS7vXdw/viewform?usp=dialog" target="_blank" class="inline-block bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-white text-xl md:text-2xl font-bold py-4 px-12 rounded-full shadow-xl transform hover:scale-105 transition duration-300 animate-pulse">
+            <a href="https://nihonkenkouiryou.jp/joining/" target="_blank" class="inline-block bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-white text-xl md:text-2xl font-bold py-4 px-12 rounded-full shadow-xl transform hover:scale-105 transition duration-300 animate-pulse">
                 今すぐ申し込む
                 <span class="block text-xs font-normal mt-1">※当日の試験はありません（後日提出）</span>
             </a>
@@ -207,22 +228,22 @@
         <div class="flex w-full overflow-hidden">
             <div class="scroll-container animate-scroll flex gap-4 min-w-full">
                 <!-- Images duplicated for seamless loop (実際の風景写真を使用) -->
-                <img src="DSC_0728.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="講義風景1">
-                <img src="DSC_0729.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="講義風景2">
-                <img src="DSC_0731.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="講義風景3">
-                <img src="HORIZON_0001_BURST20240421153614414_COVER.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="講義風景4">
-                <img src="DSC_0732.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="会場の様子">
+                <img src="DSC_0728.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="講義風景1" loading="lazy" width="256" height="160">
+                <img src="DSC_0729.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="講義風景2" loading="lazy" width="256" height="160">
+                <img src="DSC_0731.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="講義風景3" loading="lazy" width="256" height="160">
+                <img src="HORIZON_0001_BURST20240421153614414_COVER.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="講義風景4" loading="lazy" width="256" height="160">
+                <img src="DSC_0732.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="会場の様子" loading="lazy" width="256" height="160">
                 
                 <!-- Duplicate Set -->
-                <img src="DSC_0728.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="講義風景1">
-                <img src="DSC_0729.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="講義風景2">
-                <img src="DSC_0731.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="講義風景3">
-                <img src="HORIZON_0001_BURST20240421153614414_COVER.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="講義風景4">
-                <img src="DSC_0732.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="会場の様子">
+                <img src="DSC_0728.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="講義風景1" loading="lazy" width="256" height="160">
+                <img src="DSC_0729.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="講義風景2" loading="lazy" width="256" height="160">
+                <img src="DSC_0731.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="講義風景3" loading="lazy" width="256" height="160">
+                <img src="HORIZON_0001_BURST20240421153614414_COVER.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="講義風景4" loading="lazy" width="256" height="160">
+                <img src="DSC_0732.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="会場の様子" loading="lazy" width="256" height="160">
 
                  <!-- Triplicate Set for wide screens -->
-                <img src="DSC_0728.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="講義風景1">
-                <img src="DSC_0729.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="講義風景2">
+                <img src="DSC_0728.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="講義風景1" loading="lazy" width="256" height="160">
+                <img src="DSC_0729.JPG" class="h-40 w-64 object-cover rounded-lg shadow-md" alt="講義風景2" loading="lazy" width="256" height="160">
             </div>
         </div>
         <p class="text-center text-xs text-gray-500 mt-2">過去の研修会・認定審査・会場の様子（六本木ヒルズ ハリウッド大学院大学）</p>
@@ -332,7 +353,7 @@
         <div class="flex flex-col md:flex-row items-center gap-8 bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-200 observer-hidden">
             <div class="md:w-1/3 h-full">
                 <!-- 理事長写真 -->
-                <img src="information_img07.jpg" alt="佐藤元彦理事長" class="w-full h-full object-cover">
+                <img src="information_img07.jpg" alt="佐藤元彦理事長" class="w-full h-full object-cover" loading="lazy" width="400" height="300">
             </div>
             <div class="md:w-2/3 p-8">
                 <div class="mb-4">
@@ -373,7 +394,7 @@
                         <h3 class="text-lg font-bold text-medical-primary">お申し込み</h3>
                     </div>
                     <p class="text-gray-700 text-sm mb-4">お申し込みフォームから必要事項を入力し、申し込みを完了してください。</p>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScexGXvfxsSiQP6Cr3XNxmqbUaSybH3yr9TD3-5QYwuS7vXdw/viewform?usp=dialog" target="_blank" class="inline-block bg-medical-accent hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg text-sm transition duration-300">
+                    <a href="https://nihonkenkouiryou.jp/joining/" target="_blank" class="inline-block bg-medical-accent hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg text-sm transition duration-300">
                         お申し込みはこちら →
                     </a>
                 </div>
@@ -481,7 +502,35 @@
             <div class="mt-8 observer-hidden">
                 <div class="curriculum-card rounded-xl p-5 text-center">
                     <p class="text-gray-700 font-medium text-sm">会場・Zoom どちらでも同じカリキュラムで受講いただけます</p>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScexGXvfxsSiQP6Cr3XNxmqbUaSybH3yr9TD3-5QYwuS7vXdw/viewform?usp=dialog" target="_blank" class="inline-block mt-3 text-medical-primary font-bold text-sm hover:underline">お申し込みはこちら</a>
+                    <a href="https://nihonkenkouiryou.jp/joining/" target="_blank" class="inline-block mt-3 text-medical-primary font-bold text-sm hover:underline">お申し込みはこちら</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 地図・アクセス -->
+    <section class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-medical-primary mb-4 serif-font observer-hidden">アクセス</h2>
+            <p class="text-center text-gray-600 mb-8 observer-hidden">会場：ハリウッド大学院大学（六本木ヒルズ内）</p>
+            
+            <div class="grid md:grid-cols-2 gap-6 observer-hidden">
+                <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+                    <iframe src="https://maps.google.co.jp/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%B8%AF%E5%8C%BA%E5%85%AD%E6%9C%AC%E6%9C%A86-10-1&output=embed&t=m&z=16" width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="六本木ヒルズ 地図"></iframe>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-medical-light rounded-xl p-6 border border-blue-100">
+                        <h3 class="font-bold text-medical-primary text-lg mb-3 flex items-center gap-2">
+                            <i class="fas fa-university"></i> ハリウッド大学院大学
+                        </h3>
+                        <p class="text-gray-700 mb-2">〒106-0032 東京都港区六本木6-10-1</p>
+                        <p class="text-gray-600 text-sm mb-4">六本木ヒルズ 森タワー内</p>
+                        <p class="text-gray-600 text-sm mb-1"><i class="fas fa-train text-medical-primary w-5"></i> <strong>東京メトロ日比谷線</strong>「六本木駅」直結</p>
+                        <p class="text-gray-600 text-sm"><i class="fas fa-train text-medical-primary w-5"></i> <strong>都営大江戸線</strong>「六本木駅」徒歩約4分</p>
+                    </div>
+                    <a href="https://www.google.com/maps/search/%E5%85%AD%E6%9C%AC%E6%9C%A8%E3%83%92%E3%83%AB%E3%82%BA+%E3%83%8F%E3%83%AA%E3%82%A6%E3%83%83%E3%83%89%E5%A4%A7%E5%AD%A6%E9%99%A2%E5%A4%A7%E5%AD%A6" target="_blank" rel="noopener noreferrer" class="inline-block bg-medical-primary hover:bg-blue-800 text-white font-bold py-2 px-5 rounded-lg text-sm transition duration-300">
+                        <i class="fas fa-external-link-alt mr-1"></i> Googleマップで開く
+                    </a>
                 </div>
             </div>
         </div>
@@ -499,7 +548,18 @@
                     
                     <dt class="font-bold text-medical-primary flex items-center gap-2"><span class="bg-medical-primary text-white p-1 rounded text-xs">場所</span>開催形式</dt>
                     <dd class="md:col-span-2">
-                        会場　ハリウッド大学院大学（先着100名） or Zoom
+                        <div class="flex flex-col gap-3">
+                            <div class="flex items-center gap-2 p-3 bg-blue-50 rounded-lg border border-blue-100">
+                                <i class="fas fa-map-marker-alt text-medical-primary"></i>
+                                <span class="font-bold">会場：</span>ハリウッド大学院大学（六本木ヒルズ）
+                                <span class="ml-auto bg-amber-100 text-amber-800 text-sm font-bold px-2 py-0.5 rounded">先着100名</span>
+                            </div>
+                            <div class="flex items-center gap-2 p-3 bg-green-50 rounded-lg border border-green-100">
+                                <i class="fas fa-video text-green-600"></i>
+                                <span class="font-bold">Zoom：</span>オンライン
+                                <span class="ml-auto bg-green-100 text-green-800 text-sm font-bold px-2 py-0.5 rounded">無制限</span>
+                            </div>
+                        </div>
                     </dd>
 
                     <dt class="font-bold text-medical-primary flex items-center gap-2"><span class="bg-medical-primary text-white p-1 rounded text-xs">費用</span>受講費用</dt>
@@ -511,10 +571,10 @@
                 </dl>
 
                 <div class="text-center">
-                    <p class="text-red-500 font-bold mb-4">会場参加枠は先着100名限定です。Zoom参加は無制限です。</p>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScexGXvfxsSiQP6Cr3XNxmqbUaSybH3yr9TD3-5QYwuS7vXdw/viewform?usp=dialog" target="_blank" class="block w-full bg-medical-accent hover:bg-yellow-600 text-white font-bold text-xl py-4 rounded-lg shadow-lg transition duration-300 transform hover:scale-105">
+                    <p class="text-gray-600 font-bold mb-4"><span class="text-amber-600">会場のみ先着100名</span>／<span class="text-green-600">Zoomは無制限</span>で安心してご参加いただけます</p>
+                    <a href="https://nihonkenkouiryou.jp/joining/" target="_blank" class="block w-full bg-medical-accent hover:bg-yellow-600 text-white font-bold text-xl py-4 rounded-lg shadow-lg transition duration-300 transform hover:scale-105">
                         研修会・認定審査に申し込む<br>
-                        <span class="text-sm font-normal">Googleフォームへ移動します</span>
+                        <span class="text-sm font-normal">お申し込みページへ移動します</span>
                     </a>
                 </div>
             </div>
@@ -562,11 +622,11 @@
     <footer class="bg-medical-primary text-white py-12 text-center">
         <div class="max-w-4xl mx-auto px-4">
              <!-- フッターロゴ -->
-            <img src="21.03.25 健康医療学会マーク.jpg" alt="ロゴ" class="h-20 w-auto mx-auto mb-6 bg-white rounded-full p-1">
+            <img src="21.03.25 健康医療学会マーク.jpg" alt="ロゴ" class="h-20 w-auto mx-auto mb-6 bg-white rounded-full p-1" loading="lazy" width="80" height="80">
             <h2 class="text-2xl md:text-3xl font-bold mb-4 serif-font">健康と医療の知識は、<br>あなたとあなたの大切な人を守る力になります。</h2>
-            <p class="mb-8 opacity-80">定員になり次第締め切りとなります。<br>キャリアアップのため、家族のために、ぜひこの機会にご参加ください。</p>
+            <p class="mb-8 opacity-80">会場参加は先着100名、Zoomは無制限です。<br>キャリアアップのため、家族のために、ぜひこの機会にご参加ください。</p>
             
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScexGXvfxsSiQP6Cr3XNxmqbUaSybH3yr9TD3-5QYwuS7vXdw/viewform?usp=dialog" target="_blank" class="inline-block bg-medical-accent hover:bg-yellow-600 text-white font-bold text-xl py-4 px-12 rounded-full shadow-lg transition duration-300 animate-pulse">
+            <a href="https://nihonkenkouiryou.jp/joining/" target="_blank" class="inline-block bg-medical-accent hover:bg-yellow-600 text-white font-bold text-xl py-4 px-12 rounded-full shadow-lg transition duration-300 animate-pulse">
                 [会場・Web] 申し込みはこちら
             </a>
             
@@ -578,6 +638,11 @@
         </div>
     </footer>
 
+    <!-- スマホ用固定CTA（追従ボタン） -->
+    <a href="https://nihonkenkouiryou.jp/joining/" target="_blank" id="ctaFixed" class="cta-fixed md:hidden fixed bottom-0 left-0 right-0 z-40 bg-medical-accent hover:bg-yellow-600 text-white font-bold py-4 px-6 text-center shadow-[0_-4px_20px_rgba(0,0,0,0.15)]">
+        今すぐ申し込む
+    </a>
+
     <!-- Scripts -->
     <script>
         // Simple Intersection Observer for Fade-in animations
@@ -588,19 +653,34 @@
                 threshold: 0.1
             };
 
-            const observer = new IntersectionObserver((entries, observer) => {
+            const observer = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.remove('observer-hidden');
                         entry.target.classList.add('observer-visible');
                         entry.target.classList.add('animate-fade-in-up');
-                        observer.unobserve(entry.target);
+                        obs.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
 
-            const hiddenElements = document.querySelectorAll('.observer-hidden');
-            hiddenElements.forEach(el => observer.observe(el));
+            document.querySelectorAll('.observer-hidden').forEach(el => observer.observe(el));
+
+            // スマホ固定CTA：ヒーローを過ぎたら表示
+            const ctaFixed = document.getElementById('ctaFixed');
+            if (ctaFixed) {
+                const hero = document.querySelector('section.bg-medical-primary');
+                if (hero) {
+                    const heroObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            ctaFixed.classList.toggle('cta-visible', !entry.isIntersecting);
+                        });
+                    }, { threshold: 0, rootMargin: '-80px 0px 0px 0px' });
+                    heroObserver.observe(hero);
+                } else {
+                    ctaFixed.classList.add('cta-visible');
+                }
+            }
         });
     </script>
 </body>
