@@ -2,6 +2,9 @@
 .DS_Store
 Thumbs.db
 
+# Vercel（CLIで生成されるローカルリンク）
+.vercel/
+
 # Editor
 .vscode/
 .idea/
